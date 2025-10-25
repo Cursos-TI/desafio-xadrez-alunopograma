@@ -36,7 +36,7 @@ void moverBispoComLoops(int linhas, int colunas) {
 
 // Cavalo: movimento em "L" (2 cima, 1 direita) com controle de fluxo
 void moverCavalo(int movimentos) {
-    for (int i = 1; i < movimentos; i++) {
+    for (int i = 0; i < movimentos; i++) {
         int cima = 0;
         while (cima < 2) {
             printf("Cima\n");
@@ -69,7 +69,7 @@ int main() {
     printf("\nMovimento da Rainha:\n");
     moverRainha(movimentoRainha);
 
-    int movimentosCavalo = 3;
+    int movimentosCavalo = 1;
     printf("\nMovimento do Cavalo:\n");
     moverCavalo(movimentosCavalo);
 
