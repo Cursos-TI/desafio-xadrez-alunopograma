@@ -1,67 +1,81 @@
 #include <stdio.h>
 
-int main() {
+// ============================
+// Funções Recursivas
+// ============================
 
+// Torre: movimento recursivo para a direita
+void moverTorre(int casas) {
+    if (casas <= 0) return;
+    printf("Direita\n");
+    moverTorre(casas - 1);
+}
 
-    // Movimento da Torre: 5 casas para a direita usando FOR
-    int movimentoTorre = 5;
+// Rainha: movimento recursivo para a esquerda
+void moverRainha(int casas) {
+    if (casas <= 0) return;
+    printf("Esquerda\n");
+    moverRainha(casas - 1);
+}
 
-    printf("Movimento da Torre:\n");
-    for (int i = 0; i < movimentoTorre; i++) {
-        printf("Direita\n");
+// Bispo: movimento recursivo para cima e à direita
+void moverBispoRecursivo(int casas) {
+    if (casas <= 0) return;
+    printf("Cima, Direita\n");
+    moverBispoRecursivo(casas - 1);
+}
+
+// Bispo com loops aninhados: simula diagonal com controle vertical e horizontal
+void moverBispoComLoops(int linhas, int colunas) {
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            printf("Diagonal: Cima, Direita\n");
+        }
     }
+}
 
-    // Movimento do Bispo: 5 casas na diagonal para cima e à direita usando WHILE
-    int movimentoBispo = 5;
-    int contadorBispo = 0;
-
-    printf("\nMovimento do Bispo:\n");
-    while (contadorBispo < movimentoBispo) {
-        printf("Cima, Direita\n");
-        contadorBispo++;
-    }
-
-    // Movimento da Rainha: 8 casas para a esquerda usando DO-WHILE
-    int movimentoRainha = 8;
-    int contadorRainha = 0;
-
-    printf("\nMovimento da Rainha:\n");
-    do {
-        printf("Esquerda\n");
-        contadorRainha++;
-    } while (contadorRainha < movimentoRainha);
-
-
-  
-
-
-
-
-    // ============================
-    // DESAFIO 2 - Nível Aventureiro
-    // ============================
-
-    // Movimento do Cavalo: 2 casas para baixo e 1 para a esquerda
-    // Usando loop FOR externo e loop WHILE interno
-    int movimentosCavalo = 1; // número de movimentos em "L"
-    int casasBaixo = 2;
-    int casasEsquerda = 1;
-
-    printf("\nDesafio 2 - Nível Aventureiro\n");
-    printf("Movimento do Cavalo:\n");
-
-    for (int i = 0; i < movimentosCavalo; i++) {
-        // Loop interno para mover 2 casas para baixo
-        int contadorBaixo = 0;
-        while (contadorBaixo < casasBaixo) {
-            printf("Baixo\n");
-            contadorBaixo++;
+// Cavalo: movimento em "L" (2 cima, 1 direita) com controle de fluxo
+void moverCavalo(int movimentos) {
+    for (int i = 1; i < movimentos; i++) {
+        int cima = 0;
+        while (cima < 2) {
+            printf("Cima\n");
+            cima++;
         }
 
-        // Movimento perpendicular: 1 casa para a esquerda
-        printf("Esquerda\n");
+        int direita = 0;
+        while (direita < 1) {
+            printf("Direita\n");
+            direita++;
+        }
     }
+}
+
+
+
+int main() {
+    int movimentoTorre = 5;
+    printf("Movimento da Torre:\n");
+    moverTorre(movimentoTorre);
+
+    int movimentoBispo = 5;
+    printf("\nMovimento do Bispo (Recursivo):\n");
+    moverBispoRecursivo(movimentoBispo);
+
+    printf("\nMovimento do Bispo (Loops Aninhados):\n");
+    moverBispoComLoops(2, 3);
+
+    int movimentoRainha = 8;
+    printf("\nMovimento da Rainha:\n");
+    moverRainha(movimentoRainha);
+
+    int movimentosCavalo = 3;
+    printf("\nMovimento do Cavalo:\n");
+    moverCavalo(movimentosCavalo);
 
     return 0;
 }
+
+
+
 
